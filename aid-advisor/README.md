@@ -79,9 +79,16 @@ node --test test/core.test.ts
 
 Tests run fully offline against synthetic fixtures (`test/fixtures.ts`).
 
+## React Native test app
+
+An Expo app that runs this engine on a phone lives in [`app/`](./app). It
+imports `src/core` directly, so it exercises the real pipeline. See
+[`app/README.md`](./app/README.md) to run it via Expo Go.
+
 ## Roadmap
 
-1. **Shared analysis core + CLI** ← this milestone
-2. React Native app consuming `src/core` (daily fetch, on-device storage,
-   notifications, optional Claude narration via an injected `CompleteFn`)
-3. Trend-over-time tracking (week-over-week change in the same findings)
+1. **Shared analysis core + CLI** ✅
+2. **React Native (Expo) test app consuming `src/core`** ✅ (`app/`)
+3. Daily background refresh + local notifications; optional Claude narration via
+   an injected `CompleteFn`
+4. Trend-over-time tracking (week-over-week change in the same findings)

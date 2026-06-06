@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "AID Advisor",
+    "slug": "aid-advisor",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0F172A"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.aidadvisor.app"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
