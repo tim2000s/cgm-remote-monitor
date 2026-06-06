@@ -1,0 +1,15 @@
+{
+  "name": "aid-advisor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reads Nightscout data and surfaces auditable, observation-framed insights about glucose patterns, basal/bolus behaviour, and exercise impact. Information only; not a dosing advisor.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "cli": "node src/cli.ts",
+    "test": "node --test"
+  },
+  "license": "AGPL-3.0"
+}
