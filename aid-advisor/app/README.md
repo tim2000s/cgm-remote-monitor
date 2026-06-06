@@ -46,6 +46,47 @@ Your phone and computer need to be on the same network. If they aren't, run
   Metro's watch scope to the `aid-advisor` root so the out-of-app core resolves.
 - Verified here via `tsc --noEmit` and a full `expo export` Metro bundle.
 
+## Build an installable APK
+
+There are two ways to get an `.apk`. Both must run on a machine with normal
+network access (the cloud sandbox this repo was developed in blocks the Android
+SDK and Google's Maven repo, so it cannot build one).
+
+### Option A — EAS cloud build (no local Android tooling needed)
+
+Expo compiles it on their servers and gives you a download link. `eas.json`
+here already defines a `preview` profile that outputs an APK.
+
+```bash
+cd aid-advisor/app
+npm install
+npm install -g eas-cli
+eas login                 # your free Expo account
+eas init                  # creates the project (first time only)
+eas build -p android --profile preview
+```
+
+When it finishes, the CLI prints a URL to download the APK (also visible at
+expo.dev → your project → Builds). Side-load it onto your phone.
+
+### Option B — local Gradle build (needs Android SDK + JDK 17)
+
+```bash
+cd aid-advisor/app
+npm install
+npx expo prebuild -p android        # generates the native android/ project
+cd android
+./gradlew assembleRelease           # or assembleDebug for a quick test build
+# APK: android/app/build/outputs/apk/release/app-release.apk
+```
+
+A release build needs a signing keystore; `assembleDebug` produces a
+debug-signed APK that installs fine for personal testing. Easiest if you have
+Android Studio installed (it provides the SDK and accepts the licenses).
+
+> Either way, the app reads from `../src/core` via Metro's widened watch scope.
+> EAS archives the whole git repo, so the core is included automatically.
+
 ## Next
 
 A daily background refresh + local notification, and optional Claude narration
