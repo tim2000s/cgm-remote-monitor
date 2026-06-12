@@ -427,7 +427,10 @@ describe('reports', function ( ) {
       result.indexOf('50 g').should.be.greaterThan(-1); // daytoday
       result.indexOf('TDD average:</b> 2.9U').should.be.greaterThan(-1); // daytoday
       result.indexOf('<td class="tdborder">0%</td><td class="tdborder">100%</td><td class="tdborder">0%</td><td class="tdborder">2</td>').should.be.greaterThan(-1); //dailystats
-      result.indexOf('<td class="tdborder" style="background-color:#8f8"><strong>In Range: </strong></td><td class="tdborder">47.6%</td><td class="tdborder">10</td>').should.be.greaterThan(-1); // distribution
+      result.indexOf('<td class="tdborder" style="background-color:#8f8"><strong>In Range (70–180): </strong></td><td class="tdborder">47.6%</td><td class="tdborder">10</td>').should.be.greaterThan(-1); // distribution, consensus TIR band
+      result.indexOf('<td class="tdborder" style="background-color:#ffb74d"><strong>Very High (&gt;250): </strong></td><td class="tdborder">9.5%</td>').should.be.greaterThan(-1); // distribution, very high band
+      result.indexOf('<th>Time in Tight Range<br>(70–140)</th>').should.be.greaterThan(-1); // distribution, summary strip header
+      result.indexOf('<td class="tdborder">47.6%</td><td class="tdborder">0.0%</td><td class="tdborder">0.0%</td><td class="tdborder">0.0%</td><td class="tdborder">52.4%</td><td class="tdborder">9.5%</td><td class="tdborder">7.9%</td><td class="tdborder">24.3%</td>').should.be.greaterThan(-1); // distribution, TIR/TITR/below/above/GMI/CV values
       result.indexOf('<td>16 (100%)</td>').should.be.greaterThan(-1); // hourlystats
       result.indexOf('<div id="success-grid">').should.be.greaterThan(-1); //success
       result.indexOf('<b style="padding-left:4em">CAL</b>:  Scale: 1.10 Intercept: 31102 Slope: 776.91').should.be.greaterThan(-1); //calibrations
