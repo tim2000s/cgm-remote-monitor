@@ -825,3 +825,58 @@ a, a:visited, a:link {
     line-height: 13px;
   }
 }
+/* ---------------------------------------------------------------------------
+ * TIR widget - last 7 days Time in Range summary (lib/client/tir-widget.js).
+ * Fixed to the bottom-left of the main monitor view; sits below the settings
+ * drawer (z-index: 99 in drawer.css) so it never covers drawers or dialogs.
+ * ------------------------------------------------------------------------- */
+#tirWidget {
+  position: fixed;
+  left: 8px;
+  bottom: 8px;
+  max-width: 170px;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #ddd;
+  z-index: 50;
+}
+
+#tirWidget.hidden {
+  display: none;
+}
+
+#tirWidget .tir-headline {
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#tirWidget .tir-bar {
+  display: flex;
+  width: 140px;
+  height: 8px;
+  margin: 4px 0 2px 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #333;
+}
+
+#tirWidget .tir-bar .tir-band {
+  display: inline-block;
+  height: 8px;
+}
+
+#tirWidget .tir-titr {
+  font-size: 11px;
+  color: #bbb;
+}
+
+/* Too little vertical room on short screens - keep the chart clear */
+@media (max-height: 480px) {
+  #tirWidget {
+    display: none;
+  }
+}
