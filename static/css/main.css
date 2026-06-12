@@ -93,9 +93,9 @@ html, body {
 }
 
 body {
-  font-family: 'Ubuntu', sans-serif;
-  background: #000;
-  color: #bdbdbd;
+  font-family: var(--font-family-base, 'Ubuntu', sans-serif);
+  background: var(--color-bg, #000);
+  color: var(--color-text, #bdbdbd);
 }
 
 .container {
@@ -121,24 +121,24 @@ button {
 }
 
 a, a:visited, a:link {
-  color: #2196f3;
+  color: var(--color-accent, #2196f3);
   text-decoration: none;
 }
 
 #container.announcing .customTitle {
-  color: orange;
+  color: var(--color-announce, orange);
 }
 
 #container.alarming.urgent .customTitle {
-  color: red;
+  color: var(--color-bg-urgent, red);
 }
 
 #container.alarming.warning .customTitle {
-  color: yellow;
+  color: var(--color-bg-warn, yellow);
 }
 
 .primary {
-  font-family: 'Ubuntu', Verdana, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-primary, 'Ubuntu', Verdana, Helvetica, Arial, sans-serif);
   vertical-align: middle;
   clear: both;
   white-space: nowrap;
@@ -152,15 +152,15 @@ a, a:visited, a:link {
 }
 
 .urgent .bgButton {
-  color: red;
+  color: var(--color-bg-urgent, red);
 }
 
 .warning .bgButton {
-  color: yellow;
+  color: var(--color-bg-warn, yellow);
 }
 
 .inrange .bgButton {
-  color: #4cff00;
+  color: var(--color-bg-inrange, #4cff00);
 }
 
 .bgStatus .bgSpan {
@@ -211,8 +211,8 @@ a, a:visited, a:link {
 .pill {
   white-space: nowrap;
   border-radius: 5px;
-  border: 2px solid #808080;
-  background: #808080;
+  border: 2px solid var(--color-text-muted, #808080);
+  background: var(--color-text-muted, #808080);
   display: inline-block;
   margin-bottom: 4px;
   padding: 2px 0;
@@ -226,34 +226,34 @@ a, a:visited, a:link {
 .pill em {
   font-style: normal;
   font-weight: bold;
-  background: #000;
+  background: var(--color-pill-bg, #000);
   border-radius: 3px;
 }
 
 .pill label {
-  color: #000;
+  color: var(--color-text-inverse, #000);
 }
 
 .container .pill.warn em {
-  color: yellow;
+  color: var(--color-bg-warn, yellow);
 }
 
 .container .pill.urgent em {
-  color: red;
+  color: var(--color-bg-urgent, red);
 }
 
 .alarming-timeago .timeago.pill.warn {
-  border-color: yellow;
+  border-color: var(--color-bg-warn, yellow);
 }
 .alarming-timeago .timeago.pill.warn label {
-  background: yellow;
+  background: var(--color-bg-warn, yellow);
 }
 
 .alarming-timeago .timeago.pill.urgent {
-  border-color: red;
+  border-color: var(--color-bg-urgent, red);
 }
 .alarming-timeago .timeago.pill.urgent label {
-  background: red;
+  background: var(--color-bg-urgent, red);
 }
 
 .bgStatus.current .currentBG {
@@ -265,7 +265,7 @@ a, a:visited, a:link {
 }
 
 .status {
-  color: #808080;
+  color: var(--color-text-muted, #808080);
   font-size: 100px;
   white-space: normal;
 }
@@ -284,13 +284,13 @@ a, a:visited, a:link {
 }
 
 .statusPills .pill {
-  background: #808080;
-  border-color: #808080;
+  background: var(--color-text-muted, #808080);
+  border-color: var(--color-text-muted, #808080);
   margin-right: 5px;
 }
 
 .statusPills .pill em {
-  color: #bdbdbd;
+  color: var(--color-text, #bdbdbd);
 }
 
 #chartContainer {
@@ -299,7 +299,7 @@ a, a:visited, a:link {
   bottom: 0;
   height: auto;
   font-size: 20px;
-  background: #111;
+  background: var(--color-surface, #111);
   display: block;
   position: absolute;
   margin: 2px;
@@ -316,7 +316,7 @@ a, a:visited, a:link {
 #silenceBtn, #viewMenu {
   z-index: 99;
   border-radius: 5px;
-  border: 2px solid #bdbdbd;
+  border: 2px solid var(--color-text, #bdbdbd);
 }
 
 #viewMenu {
@@ -336,7 +336,7 @@ a, a:visited, a:link {
 
 .bgButton {
   margin: 10px;
-  border: 2px solid #000;
+  border: 2px solid var(--color-bg, #000);
   border-radius: 5px;
   display: inline-block;
   width: 360px;
@@ -349,13 +349,13 @@ a, a:visited, a:link {
 .pill.rawbg {
   display: inline-block;
   border-radius: 2px;
-  border: 1px solid #808080;
+  border: 1px solid var(--color-text-muted, #808080);
   padding: 0;
 }
 
 .pill.rawbg em {
   color: white;
-  background-color: black;
+  background-color: var(--color-pill-bg, black);
   display: block;
   font-size: 20px;
   border-radius: 0;
@@ -369,21 +369,21 @@ a, a:visited, a:link {
 }
 
 .alarming .bgButton {
-  border-color: #bdbdbd;
-  color: #000;
+  border-color: var(--color-text, #bdbdbd);
+  color: #000; /* stays black on the warn/urgent alarm background in every scheme */
   box-shadow: 2px 2px 0 #ddd;
 }
 
 .alarming.urgent .bgButton {
-  background-color: red;
+  background-color: var(--color-bg-urgent, red);
 }
 
 .alarming.warning .bgButton {
-  background-color: yellow;
+  background-color: var(--color-bg-warn, yellow);
 }
 
 .alarming .bgButton:active {
-  border: 2px solid #bdbdbd;
+  border: 2px solid var(--color-text, #bdbdbd);
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -425,7 +425,7 @@ a, a:visited, a:link {
   list-style: none;
   margin: 4px;
   padding: 0;
-  color: #808080;
+  color: var(--color-text-muted, #808080);
   width: 40%;
   text-align: center;
 }
@@ -435,14 +435,14 @@ a, a:visited, a:link {
   font-size: 18px;
   white-space: nowrap;
   border-radius: 5px;
-  border: 2px solid #000;
+  border: 2px solid var(--color-bg, #000);
   cursor: pointer;
 }
 
 .focus-range .selected {
-  border-color: #808080;
-  color: #000;
-  background: #808080;
+  border-color: var(--color-text-muted, #808080);
+  color: var(--color-text-inverse, #000);
+  background: var(--color-text-muted, #808080);
 }
 
 .pill.hidden {
@@ -464,11 +464,11 @@ a, a:visited, a:link {
 
 .authentication-status {
   padding: 10px;
-  border-top: 1px solid #bdbdbd;
+  border-top: 1px solid var(--color-text, #bdbdbd);
 }
 
 .authentication-status a {
-  color: #2196f3;
+  color: var(--color-accent, #2196f3);
   text-decoration: underline;
 }
 
@@ -861,7 +861,7 @@ a, a:visited, a:link {
   margin: 4px 0 2px 0;
   border-radius: 4px;
   overflow: hidden;
-  background: #333;
+  background: var(--color-surface-alt, #333);
 }
 
 #tirWidget .tir-bar .tir-band {

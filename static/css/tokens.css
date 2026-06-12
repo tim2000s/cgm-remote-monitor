@@ -1,0 +1,81 @@
+/* ---------------------------------------------------------------------------
+ * Nightscout design tokens.
+ *
+ * Values are derived from the colors already in use in main.css / drawer.css /
+ * dropdown.css so that the default (dark) appearance is pixel-identical.
+ * This file must be loaded as the FIRST stylesheet on every page.
+ *
+ * NOTE: the BG-status colors (--color-bg-inrange / --color-bg-warn /
+ * --color-bg-urgent) are safety-critical color semantics and are identical in
+ * both dark and light color schemes. Do not change them per-scheme.
+ * ------------------------------------------------------------------------- */
+
+:root {
+  /* --- Color palette (dark, the historical default) --------------------- */
+  --color-bg: #000;             /* page background (body)                   */
+  --color-surface: #111;        /* chart container background               */
+  --color-surface-alt: #333;    /* toolbar / widget bar background          */
+  --color-surface-raised: #666; /* drawers (settings, treatments, wizard)   */
+  --color-border: #999;         /* drawer / toolbar borders                 */
+
+  --color-text: #bdbdbd;        /* default body text                        */
+  --color-text-soft: #ccc;      /* toolbar title / button bar icons         */
+  --color-text-bright: #eee;    /* drawer text                              */
+  --color-text-muted: #808080;  /* secondary text, pill chrome              */
+  --color-text-inverse: #000;   /* text placed on mid-gray pill surfaces    */
+
+  --color-accent: #2196f3;      /* links                                    */
+
+  /* --- BG status colors (safety-critical, scheme-invariant) ------------- */
+  --color-bg-inrange: #4cff00;  /* in-range green                           */
+  --color-bg-warn: yellow;      /* warning yellow                           */
+  --color-bg-urgent: red;       /* urgent red                               */
+  --color-announce: orange;     /* announcement highlight                   */
+  --color-pill-bg: #000;        /* backdrop behind status-colored values;
+                                   stays black so warn/urgent text remains
+                                   readable in every scheme                 */
+
+  /* --- Dropdown menus ---------------------------------------------------- */
+  --color-menu-bg: #BBBBBB;
+  --color-menu-text: #24313C;
+  --color-menu-hover: #EEEEFF;
+
+  /* --- Spacing scale ------------------------------------------------------ */
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 5px;
+  --space-md: 10px;
+  --space-lg: 15px;
+  --space-xl: 20px;
+
+  /* --- Radii -------------------------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+
+  /* --- Typography --------------------------------------------------------- */
+  --font-family-base: 'Ubuntu', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-family-primary: 'Ubuntu', Verdana, Helvetica, Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+ * Light color scheme: conservative grays. Only background / surface / text
+ * tokens are adjusted; accent and the BG status colors stay identical.
+ * ------------------------------------------------------------------------- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #fafafa;
+    --color-surface: #ededed;
+    --color-surface-alt: #d9d9d9;
+    --color-surface-raised: #e4e4e4;
+    --color-border: #aaaaaa;
+
+    --color-text: #333333;
+    --color-text-soft: #444444;
+    --color-text-bright: #1a1a1a;
+    --color-text-muted: #6e6e6e;
+    --color-text-inverse: #ffffff;
+  }
+}
