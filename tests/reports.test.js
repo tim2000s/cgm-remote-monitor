@@ -390,6 +390,7 @@ describe('reports', function ( ) {
       // Load profile, we need to operate in UTC
       client.sbx.data.profile.loadData(exampleProfile);
 
+      $('#daytoday').addClass('selected'); // daytoday is no longer the default-selected first tab (agp is), but its output is asserted below
       $('#treatments').addClass('selected');
       $('a.presetdates :first').click();
       $('#rp_notes').val('something');
