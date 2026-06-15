@@ -489,13 +489,13 @@ describe('reports', function ( ) {
 
       // Verify week-to-week report renders circles with expected day-of-week colors
       // Note: Exact coordinates are not checked as they vary with chart dimensions
-      result.indexOf('fill="rgb(73, 22, 153)"').should.be.greaterThan(-1); // Sunday color
-      result.indexOf('fill="rgb(34, 201, 228)"').should.be.greaterThan(-1); // Monday color
-      result.indexOf('fill="rgb(0, 153, 123)"').should.be.greaterThan(-1); // Tuesday color
-      result.indexOf('fill="rgb(135, 135, 228)"').should.be.greaterThan(-1); // Wednesday color
-      result.indexOf('fill="rgb(135, 49, 204)"').should.be.greaterThan(-1); // Thursday color
-      result.indexOf('fill="rgb(36, 36, 228)"').should.be.greaterThan(-1); // Friday color
-      result.indexOf('fill="rgb(0, 234, 188)"').should.be.greaterThan(-1); // Saturday color
+      result.indexOf('fill="rgb(31, 119, 180)"').should.be.greaterThan(-1); // Sunday color
+      result.indexOf('fill="rgb(255, 127, 14)"').should.be.greaterThan(-1); // Monday color
+      result.indexOf('fill="rgb(44, 160, 44)"').should.be.greaterThan(-1); // Tuesday color
+      result.indexOf('fill="rgb(214, 39, 40)"').should.be.greaterThan(-1); // Wednesday color
+      result.indexOf('fill="rgb(148, 103, 189)"').should.be.greaterThan(-1); // Thursday color
+      result.indexOf('fill="rgb(140, 86, 75)"').should.be.greaterThan(-1); // Friday color
+      result.indexOf('fill="rgb(23, 190, 207)"').should.be.greaterThan(-1); // Saturday color
 
       done();
     });
