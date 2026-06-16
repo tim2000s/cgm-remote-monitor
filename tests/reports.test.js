@@ -431,7 +431,8 @@ describe('reports', function ( ) {
       result.indexOf('<td class="tdborder" style="background-color:#4caf50"><strong>In Range (70–180): </strong></td><td class="tdborder">47.6%</td><td class="tdborder">10</td>').should.be.greaterThan(-1); // distribution, consensus TIR band
       result.indexOf('<td class="tdborder" style="background-color:#ffb74d"><strong>Very High (&gt;250): </strong></td><td class="tdborder">9.5%</td>').should.be.greaterThan(-1); // distribution, very high band
       result.indexOf('<th>Time in Tight Range<br>(70–140)</th>').should.be.greaterThan(-1); // distribution, summary strip header
-      result.indexOf('<td class="tdborder">47.6%</td><td class="tdborder">0.0%</td><td class="tdborder">0.0%</td><td class="tdborder">0.0%</td><td class="tdborder">52.4%</td><td class="tdborder">9.5%</td><td class="tdborder">7.9%</td><td class="tdborder">24.3%</td>').should.be.greaterThan(-1); // distribution, TIR/TITR/below/above/GMI/CV values
+      result.indexOf('<th>Time in Normal Range<br>(63–140)</th>').should.be.greaterThan(-1); // distribution, summary strip TINR header
+      result.indexOf('<td class="tdborder">47.6%</td><td class="tdborder">0.0%</td><td class="tdborder">0.0%</td><td class="tdborder">0.0%</td><td class="tdborder">0.0%</td><td class="tdborder">52.4%</td><td class="tdborder">9.5%</td><td class="tdborder">7.9%</td><td class="tdborder">24.3%</td>').should.be.greaterThan(-1); // distribution, TIR/TITR/TINR/below/above/GMI/CV values
       result.indexOf('<td>16 (100%)</td>').should.be.greaterThan(-1); // hourlystats
       result.indexOf('<div id="success-grid">').should.be.greaterThan(-1); //success
       result.indexOf('<b style="padding-left:4em">CAL</b>:  Scale: 1.10 Intercept: 31102 Slope: 776.91').should.be.greaterThan(-1); //calibrations
