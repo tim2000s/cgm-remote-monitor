@@ -2,8 +2,8 @@
  * Nightscout design tokens.
  *
  * Trio theme (2026 UI modernization): dark-only, card-based, modelled on the
- * Trio iOS app. The previous light color scheme has been removed so the app
- * is ALWAYS dark regardless of the OS prefers-color-scheme setting.
+ * Trio iOS app. A single dark color scheme is used regardless of the OS
+ * prefers-color-scheme setting (Nightscout has always rendered dark).
  *
  * main.css / drawer.css / dropdown.css consume these via var(--token, fallback).
  * Re-theme by changing the VALUES here; literal fallbacks are kept in the
