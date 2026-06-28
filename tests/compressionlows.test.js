@@ -65,4 +65,32 @@ describe('compression lows', function () {
     cl.detectIndexes(recs, { rateMgdlPerMin: 100 }).length.should.equal(0);
   });
 
+  it('still flags a V whose descent has noise (nearest-neighbour validation)', function () {
+    // small upward wiggle in the descent (90 -> 95) would break a strict
+    // monotonic limb, but the nearest-neighbour rate still validates the V
+    var recs = series(2, [120, 90, 95, 60, 95, 120, 120]);
+    cl.detectIndexes(recs).length.should.be.greaterThan(0);
+    cl.filterCompressionLows(recs).some(function (r) { return r.bgValue === 60; }).should.equal(false);
+  });
+
+  it('flags a ~35 min symmetric overnight U (within the 45 min cap)', function () {
+    var recs = series(1, [110, 90, 65, 60, 55, 52, 55, 60, 65, 68, 90, 110]); // trough ~35 min
+    cl.detectIndexes(recs).length.should.be.greaterThan(0);
+  });
+
+  it('does not flag a low preceded by a long sensor gap (ambiguous)', function () {
+    // 90, then a 30-min dropout, then a sudden deep low: neighbour is too far
+    // away to evidence a steep drop, so we leave it alone
+    var base = new Date(2024, 0, 15, 5, 0, 0, 0);
+    var t = function (mins) { return new Date(base.getTime() + mins * 60000); };
+    var recs = [
+      { sgv: 5, bgValue: 90, displayTime: t(0) }    // 05:00
+      , { sgv: 2.7, bgValue: 48, displayTime: t(30) } // 05:30 (30-min gap)
+      , { sgv: 2.3, bgValue: 42, displayTime: t(35) }
+      , { sgv: 2.5, bgValue: 45, displayTime: t(40) }
+      , { sgv: 5, bgValue: 90, displayTime: t(45) }
+    ];
+    cl.detectIndexes(recs).length.should.equal(0);
+  });
+
 });
