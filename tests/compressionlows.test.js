@@ -78,6 +78,29 @@ describe('compression lows', function () {
     cl.detectIndexes(recs).length.should.be.greaterThan(0);
   });
 
+  it('flags a threshold-edge V by measuring against the trough minimum', function () {
+    // crosses 70 slowly (72 -> 69) then plunges to 50: the drop into the
+    // minimum and the recovery are both steep even though the first
+    // sub-threshold sample (69) is near the threshold
+    var recs = series(2, [120, 90, 72, 69, 50, 90, 110]);
+    cl.detectIndexes(recs).length.should.be.greaterThan(0);
+    cl.filterCompressionLows(recs).some(function (r) { return r.bgValue === 50; }).should.equal(false);
+  });
+
+  it('rejects a trough that contains a long sensor gap', function () {
+    // 55 then a 45-min dropout then 50: endpoints look like a steep V but the
+    // trough is a dropout-bounded ambiguous low, not a sampled compression low
+    var base = new Date(2024, 0, 15, 5, 0, 0, 0);
+    var t = function (mins) { return new Date(base.getTime() + mins * 60000); };
+    var recs = [
+      { sgv: 5.5, bgValue: 100, displayTime: t(0) }   // 05:00
+      , { sgv: 3.0, bgValue: 55, displayTime: t(5) }   // 05:05
+      , { sgv: 2.7, bgValue: 50, displayTime: t(50) }  // 05:50 (45-min gap inside trough)
+      , { sgv: 5.5, bgValue: 100, displayTime: t(55) } // 05:55
+    ];
+    cl.detectIndexes(recs).length.should.equal(0);
+  });
+
   it('does not flag a low preceded by a long sensor gap (ambiguous)', function () {
     // 90, then a 30-min dropout, then a sudden deep low: neighbour is too far
     // away to evidence a steep drop, so we leave it alone
