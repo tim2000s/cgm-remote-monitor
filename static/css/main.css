@@ -311,6 +311,16 @@ a, a:visited, a:link {
   height: 100%;
   margin: 0;
   padding: 0;
+  /* let drag-to-pan own horizontal touch gestures instead of page scrolling */
+  touch-action: none;
+}
+
+/* drag-to-pan capture surface over the main (focus) chart */
+.pan-surface {
+  cursor: grab;
+}
+.pan-surface:active {
+  cursor: grabbing;
 }
 
 #silenceBtn, #viewMenu {
