@@ -920,3 +920,66 @@ a, a:visited, a:link {
     display: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Multi-sensor comparison legend (lib/client/sensor-legend.js), shown only
+ * with MULTI_SENSOR_DISPLAY. Bottom-right, opposite the TIR widget.
+ * ------------------------------------------------------------------------- */
+#sensorLegend {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  max-width: min(320px, calc(100vw - 16px));
+  padding: 6px 8px;
+  background: var(--trio-card-bg, rgba(10, 34, 68, 0.55));
+  border: var(--trio-card-border, 1px solid rgba(255, 255, 255, 0.07));
+  border-radius: var(--radius-card, 15px);
+  box-shadow: var(--trio-card-shadow, 0 2px 8px rgba(2, 12, 24, 0.45));
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--color-text, #cdd9e5);
+  z-index: 50;
+}
+
+#sensorLegend.hidden {
+  display: none;
+}
+
+#sensorLegend .sensor-notice {
+  margin-bottom: 4px;
+  color: var(--color-bg-warn, #ffb74d);
+}
+
+#sensorLegend .sensor-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 3px 4px;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+#sensorLegend .sensor-toggle:focus-visible {
+  outline: 2px solid var(--color-accent, #56AAEC);
+}
+
+#sensorLegend .sensor-toggle.is-hidden {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+
+#sensorLegend .sensor-name {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+#sensorLegend .sensor-value {
+  white-space: nowrap;
+  font-weight: bold;
+}
